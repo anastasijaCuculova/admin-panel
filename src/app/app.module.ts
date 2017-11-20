@@ -1,11 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {SharedModule} from './shared/shared.module';
+import {CoreModule} from './core/core.module';
+import {RouterModule} from "@angular/router";
+import {CreateShirtComponent} from "./core/shirt/create.shirt.component";
+import {ListShirtsComponent} from "./core/shirt/list.shirts.component";
 
 @NgModule({
   declarations: [
@@ -14,7 +13,16 @@ import { CoreModule } from './core/core.module';
   imports: [
     CoreModule,
     SharedModule,
-    AppRoutingModule
+    RouterModule.forRoot([
+      {
+        path: 'shirts',
+        component: ListShirtsComponent,
+      },
+      {
+        path: 'create-shirt',
+        component: CreateShirtComponent,
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
